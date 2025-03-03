@@ -2,12 +2,14 @@ import tkinter as tk
 from tkinter import messagebox
 from PIL import Image, ImageTk
 import os
-from inventario import abrir_ventana_inventario  # Importar la función del módulo inventario.py
+from inventario import abrir_ventana_inventario
+from caja import abrir_ventana_apertura_caja
 
 # Crear la ventana principal
 root = tk.Tk()
 root.title("Punto de Venta")
 root.geometry("800x600")
+root.state('zoomed')  # Maximizar la ventana principal
 
 # Obtener la ruta del directorio del script
 directorio_actual = os.path.dirname(os.path.abspath(__file__))
@@ -62,7 +64,7 @@ button_style = {
 }
 
 # Botón para Caja
-btn_caja = tk.Button(root, text="Caja", command=lambda: abrir_ventana("Caja"), **button_style)
+btn_caja = tk.Button(root, text="Caja", command=lambda: abrir_ventana_apertura_caja(root), **button_style)
 btn_caja.grid(row=1, column=0, padx=10, pady=10)
 
 # Botón para Inventario
